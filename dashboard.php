@@ -33,7 +33,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
 <div class="flex">
 <img src="image/d739fc1c-f8f3-4e8f-8f02-d5ca0da3c533_200x200%20(1).png" alt="">
 </div>
-        <button type="button" class="btn btn-primary test" data-toggle="modal" data-target="#exampleModal" >ajouter un TODO </button>
+
 <!-- La modal pour ajouter un TODO -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -118,7 +118,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
 <div class="flex">
 
 <div class="read">	<?php
-    echo "<div style='text-align: center; height: 50px'> <h2>TODOList de ".$_SESSION['pseudo']." : </h2></div>";
+    echo "<div style='text-align: center; height: 50px'> <h2>TODOList de ".$_SESSION['pseudo']."   <button type=\"button\" class=\"btn btn-primary test\" data-toggle=\"modal\" data-target=\"#exampleModal\" >ajouter un TODO </button></h2></div>";
     ?>
 <div class="flex">
     <ul class='liste_tache' style="  list-style-type: none">
