@@ -79,11 +79,11 @@ function afficheListeTache(){
 				res_arr.forEach(element =>{
 					contenuHtml += '<li class="row">';
 					if(element.etat == 0){
-	  					contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'" data-etat="'+element.etat+'"></div>';						
+	  					contenuHtml += '<div class=" col-2"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'" data-etat="'+element.etat+'"></div>';
 					}else{
-						contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'" data-etat="'+element.etat+'" checked></div>';						
+						contenuHtml += '<div class=" col-2"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'" data-etat="'+element.etat+'" checked></div>';
 					}
-	    			contenuHtml += '<div class="col">';
+	    			contenuHtml += '<div class="col-4">';
 
 	    			if(element.etat == 0){
 	        			contenuHtml += '<p><span id="text_tache'+cpt+'" class=""> '+element.tache+'</span></p>';
@@ -91,8 +91,10 @@ function afficheListeTache(){
 	        			contenuHtml += '<p><span id="text_tache'+cpt+'" class="barrer"> '+element.tache+'</span></p>';
 					}
 	        		contenuHtml += '</div>'+
-	    							'<div class=" col"> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'+element.id+'">attribuer</button></div>'+
-	    							'<div class=" col">   <button class="btn btn-primary btn_modif" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'+element.id+'">modifier</button></div>'+
+	    							'<div class=" col-2 "> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'+element.id+'">attribuer</button></div>'+
+
+	    							'<div class=" col-2">   <button class="btn btn-primary btn_modif" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'+element.id+'">modifier</button></div>'+
+						'<div class=" col-2 "> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'+element.id+'">supprimer</button></div>'+
 								'</li>';
 					cpt++;
 				});
