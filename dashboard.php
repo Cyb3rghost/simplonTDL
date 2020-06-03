@@ -16,6 +16,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
 	    <link rel="stylesheet" href="CSS/style.css">
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	    <link rel="stylesheet" href="CSS/style.css">
+        <link rel="icon" href="image/test.png" />
     <!-- JS, Popper.js, and jQuery -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <script src="https://kit.fontawesome.com/6bffc813f0.js" crossorigin="anonymous"></script>
@@ -32,6 +33,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
 <div class="flex">
 <img src="image/d739fc1c-f8f3-4e8f-8f02-d5ca0da3c533_200x200%20(1).png" alt="">
 </div>
+        <button type="button" class="btn btn-primary test" data-toggle="modal" data-target="#exampleModal" >ajouter un TODO </button>
 <!-- La modal pour ajouter un TODO -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -115,9 +117,9 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
 
 <div class="flex">
 
-<div class="read">
-
-    <div style="text-align: center"> <h2>ajouter un TODO  : <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">ajouter</button></h2></div>
+<div class="read">	<?php
+    echo "<div style='text-align: center; height: 50px'> <h2>TODOList de ".$_SESSION['pseudo']." : </h2></div>";
+    ?>
 <div class="flex">
     <ul class='liste_tache' style="  list-style-type: none">
     	<!-- Zone d'affichage de la liste des tâches -->
