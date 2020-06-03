@@ -26,7 +26,8 @@ if(!empty($_POST['username']) && !empty($_POST['password']))
                     $_SESSION['id']=$row['id'];
                     $_SESSION['pseudo']=$row['nom'];
 
-                    header("Location:../dashboard.php");
+                    // header("Location:../dashboard.php");
+                    echo 'ok'; //  La variable valide est définie dans le fichier "server.php"
 
                 }else{
                     echo "Connexion impossible. [Nom d'utilisateur / Password incorrect]";
