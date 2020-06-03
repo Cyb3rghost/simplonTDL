@@ -85,8 +85,6 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
 </div>
 
 
-<<<<<<< HEAD
-=======
 <!-- la modal pour modifier un todo-->
 
 <div class="modal fade" id="exampleModalLabelModif" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -115,7 +113,6 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
     </div>
 </div>
 
->>>>>>> 4c3833d57b48986cff9dcad8319fbbf611bd9cbc
 <div class="flex">
 
 <div class="read">

@@ -58,13 +58,6 @@ $(document).on('click','.btn_suppr',function(){
 	supprimerTache(id_tache)
 });
 
-<<<<<<< HEAD
-$(document).on('click','.chk',function(){	
-	myFunction(this,$(this).data("cpt"));
-});
-
-function afficheListeTache(id_user){	
-=======
 $(document).on('click','.chk',function(){
 	barrerTexte(this,$(this).data("cpt"));
 	if (elem.checked == true){
@@ -75,7 +68,6 @@ $(document).on('click','.chk',function(){
 });
 
 function afficheListeTache(){	
->>>>>>> 4c3833d57b48986cff9dcad8319fbbf611bd9cbc
 	let tache = 'azerty';//$('.contenu').val();
 	let cpt =0;
 	$.ajax({
@@ -89,18 +81,6 @@ function afficheListeTache(){
 				res_arr.forEach(element =>{
 					let contenuHtml = '<li class="row">';
 					if(element.etat == 0){
-<<<<<<< HEAD
-	  					contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" value="'+element.id+'"></div>';						
-					}else{
-						contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" value="'+element.id+'" checked></div>';						
-					}
-	    			contenuHtml += '<div class="col">'+
-	        						'<p><span id="text_tache'+cpt+' data-cpt="'+cpt+'"> '+element.tache+'</span></p></div>'+
-	    							'<div class=" col"> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">attribuer</button></div>'+
-	    							'<div class=" col">   <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">modifier</button></div>'+
-								'</li>';
-					$('.liste_tache').append(contenuHtml);
-=======
 	  					contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'"></div>';						
 					}else{
 						contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'" checked></div>';						
@@ -114,7 +94,6 @@ function afficheListeTache(){
 					//	Barrer Texte
 					barrerTexte($('chk'+cpt),cpt);
 					cpt++;
->>>>>>> 4c3833d57b48986cff9dcad8319fbbf611bd9cbc
 				});
 			}else{
 				alert('Une erreur est survenu lors du chargement des données');
@@ -213,22 +192,11 @@ function message(msg,couleur){
   } 
 }
 
-<<<<<<< HEAD
-function myFunction(elem,cpt) {
-    // Get the output text
-    var text = document.getElementById("text");
-    // If the checkbox is checked, display the output text
-    if (elem.checked == true){
-        document.getElementById("text_tache"+cpt).classList.add('barrer');
-    } else {
-        document.getElementById("text_tache"+cpt).classList.add('nonbarrer');
-=======
 function barrerTexte(elem,cpt) {
     // Si la case est coché on barre le text
     if (elem.checked == true){
         $("#text_tache"+cpt).addClass('barrer');
     } else {
         $("#text_tache"+cpt).removeClass('barrer');
->>>>>>> 4c3833d57b48986cff9dcad8319fbbf611bd9cbc
     }
 }
