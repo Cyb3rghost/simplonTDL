@@ -41,13 +41,13 @@
 <br/>
 <br/>
     <h2 class="text-center">ToDoList Simplon</h2>    
-    <form action="/examples/actions/confirmation.php" method="post">
+    <form action="scripts/connexion.php" method="post">
            
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Username" required="required">
+            <input type="text" class="form-control" name="username" placeholder="Username" required="required">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password" required="required">
+            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">Connexion</button>
