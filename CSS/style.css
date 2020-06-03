@@ -1,3 +1,5 @@
+/** code color : blue #B7B7E1 ; Mauve : #DBC2FF ; cultured : #F6F4F4 **/
+
 body{
     height: 100%;
     width: 100%;
@@ -12,10 +14,25 @@ body{
 
 .read{
     background-color: white;
-    height: auto;
+    height: 500px;
     box-shadow: 10px 5px 5px grey;
-    border: 1px solid black;
+    border: 1px solid #B7B7E1;
     border-radius: 10px;
     width: 50%;
-    margin-top: 100px;
+}
+
+.btn-primary{
+    background-color: #B7B7E1 !important;
+    border-color: #B7B7E1 !important;
+
+}
+
+.btn-primary:hover{
+    background-color: #DBC2FF !important;
+    border-color: #DBC2FF !important;
+}
+
+li{
+    cursor: pointer;
+    margin-top: 5px;
 }
