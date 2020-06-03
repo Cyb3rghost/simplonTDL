@@ -19,7 +19,7 @@
 			}
 		}elseif($action == 'ajout'){
 			//	Code pour l'ajout
-
+			require('ajout.php');
 		}elseif($action == 'modif'){
 				//	Code pour la mise à jour des tâches
 

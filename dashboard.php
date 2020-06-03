@@ -32,7 +32,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
 	    <div class="modal-dialog" role="document">
 	        <div class="modal-content">
 	            <div class="modal-header">
-	                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+	                <h5 class="modal-title" id="exampleModalLabel">Ajouter une tâche</h5>
 	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	                    <span aria-hidden="true">&times;</span>
 	                </button>
@@ -40,16 +40,9 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
 	            <div class="modal-body">
 	                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="TODO 1">
 	            </div>
-	            <div class="input-group mb-3">
-	                <select class="custom-select" id="liste_u">
-	                    <option selected>Attribuer à un utilisateur</option>
-	                    <!-- Zone d'affichage de la liste des utilisateur -->
-	                </select>
-
-	            </div>
 	            <div class="modal-footer">
 	                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-	                <button type="button" class="btn btn-primary btn_valider_aj">Submit</button>
+	                <button type="button" class="btn btn-primary btn_valider_aj">Ajouter</button>
 	            </div>
 	        </div>
 	    </div>
