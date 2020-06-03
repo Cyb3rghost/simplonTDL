@@ -16,6 +16,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
 	    <link rel="stylesheet" href="CSS/style.css">
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	    <link rel="stylesheet" href="CSS/style.css">
+        <link rel="icon" href="image/test.png" />
     <!-- JS, Popper.js, and jQuery -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <script src="https://kit.fontawesome.com/6bffc813f0.js" crossorigin="anonymous"></script>

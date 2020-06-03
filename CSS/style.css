@@ -14,11 +14,12 @@ body{
 
 .read{
     background-color: white;
-    height: 500px;
+    height: auto;
     box-shadow: 10px 5px 5px grey;
     border: 1px solid #B7B7E1;
     border-radius: 10px;
     width: 50%;
+    margin-bottom: 100px;
 }
 
 .btn-primary{
