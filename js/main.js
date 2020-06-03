@@ -36,8 +36,9 @@ $(document).on('click','.btn_ajout_autre_u',function(){
 // 	ajouterTache(id_prop,tache,etat,id_user);	
 // });
 
-$(document).on('click','.btn_valider_aj',function(){
-	let tache = $('.tache').val();
+$(document).on('click','#btn_valider_aj',function(e){	
+	e.preventDefault();
+	let tache = $('#exampleFormControlTextareaAjoutTache').val();
 	//	Ajouter une tâche
 	ajouterTache(tache);	
 });
@@ -49,8 +50,16 @@ $(document).on('click','.btn_ajout_t',function(e){
 
 $(document).on('click','.btn_modif',function(e){		
 	e.preventDefault();
-	let id_tache = $(this).data("cpt");
-	// mettreAjourTache(id_tache);
+	$('#id_tache').val($(this).data("id_tache"));	
+	$('#tache').val($(this).data("tache"));	
+	$('#exampleFormControlTextareaModifTache').val($('#tache').val());
+});
+
+$(document).on('click','#btn_valider_modif',function(e){		
+	e.preventDefault();
+	let tache = $('#exampleFormControlTextareaModifTache').val();
+	let id_tache = $('#id_tache').val();
+	mettreAjourTache(id_tache,tache);
 });
 
 $(document).on('click','.btn_suppr',function(e){	
@@ -94,7 +103,7 @@ function afficheListeTache(){
 					}
 	        		contenuHtml += '</div>'+
 	    							'<div class=" col"> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'+element.id+'">attribuer</button></div>'+
-	    							'<div class=" col">  <button class="btn btn-primary btn_modif" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'+element.id+'">modifier</button></div>'+
+	    							'<div class=" col">  <button class="btn btn-primary btn_modif" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'+element.id+'" data-tache="'+element.tache+'">modifier</button></div>'+
 	    							'<div class=" col">  <button class="btn btn-primary btn_suppr" data-toggle="modal" data-target="#exampleModalLabelsuppr" data-id_tache="'+element.id+'">supprimer</button></div>'+
 								'</li>';
 					cpt++;
@@ -140,14 +149,18 @@ function ajouterTache(tache){
 	});
 }
 
-function mettreAjourTache(id_tache){
+function mettreAjourTache(id_tache,tache){
 
 	$.ajax({
 		url : 'scripts/server.php',
 		type : 'POST',
-		data : {id:id_tache,action:'modif'},
+		data : {id:id_tache,tache:tache,action:'modif'},
 		success:function(reponse){
-			location.reload();
+			if(reponse=='ok'){
+				location.replace('dashboard.php');
+			}else{
+				message(reponse,'red');
+			}
 		}
 	});
 }

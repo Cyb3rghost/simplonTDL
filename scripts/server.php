@@ -20,8 +20,8 @@
 			//	Code pour l'ajout
 			require('ajout.php');
 		}elseif($action == 'modif'){
-				//	Code pour la mise à jour des tâches
-
+			//	Code pour la mise à jour des tâches			
+			require('modification.php');
 		}elseif($action == 'modif_etat'){
 			//	Code pour la modification de l'état
 			require('valide.php');

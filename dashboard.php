@@ -45,14 +45,14 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
                 </button>
             </div>
             <div class="modal-body">
-                <textarea class="form-control tache" id="exampleFormControlTextarea1" rows="3" placeholder="..."></textarea>
+                <textarea class="form-control tache" id="exampleFormControlTextareaAjoutTache" rows="3" placeholder="..."></textarea>
             </div>
 
 
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary btn_valider_aj">Submit</button>
+                <button type="button" class="btn btn-primary" id='btn_valider_aj'>Submit</button>
             </div>
         </div>
     </div>
@@ -100,8 +100,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
             </div>
             <div class="modal-body">
                 <div class="input-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="..."></textarea>
-
+                    <textarea class="form-control" id="exampleFormControlTextareaModifTache" rows="3" placeholder="..."></textarea>
                 </div>
 
             </div>
@@ -109,7 +108,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-primary" id='btn_valider_modif'>Submit</button>
             </div>
         </div>
     </div>
@@ -124,6 +123,10 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
     <ul class='liste_tache' style="  list-style-type: none">
     	<!-- Zone d'affichage de la liste des tâches -->
     </ul>
+</c>
+<div>	
+    <input type="hidden" name="" id='id_tache'>
+    <input type="hidden" name="" id='tache'>
 </div>
 </div>
 	</body>
