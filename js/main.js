@@ -42,20 +42,22 @@ $(document).on('click','.btn_valider_aj',function(){
 	ajouterTache(tache);	
 });
 
-$(document).on('click','.btn_ajout_t',function(){
+$(document).on('click','.btn_ajout_t',function(e){
 	//	Afficher la liste des utilisateurs	
 		afficheListeUsers();		
 });
 
-$(document).on('click','.btn_modif',function(){		
+$(document).on('click','.btn_modif',function(e){		
+	e.preventDefault();
 	let id_tache = $(this).data("cpt");
 	// mettreAjourTache(id_tache);
 });
 
-$(document).on('click','.btn_suppr',function(){	
-	let id_tache = $(this).data("cpt");
+$(document).on('click','.btn_suppr',function(e){	
+	e.preventDefault();
+	let id_tache = $(this).data("id_tache");
 	//	Supprimer une tâche
-	supprimerTache(id_tache)
+	supprimerTache(id_tache);
 });
 
 $(document).on('click','.chk',function(){
@@ -92,8 +94,8 @@ function afficheListeTache(){
 					}
 	        		contenuHtml += '</div>'+
 	    							'<div class=" col"> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'+element.id+'">attribuer</button></div>'+
-	    							'<div class=" col">   <button class="btn btn-primary btn_modif" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'+element.id+'">modifier</button></div>'+
-	    							'<div class=" col">   <button class="btn btn-primary btn_suppr" data-toggle="modal" data-target="#exampleModalLabelsuppr" data-id_tache="'+element.id+'">supprimer</button></div>'+
+	    							'<div class=" col">  <button class="btn btn-primary btn_modif" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'+element.id+'">modifier</button></div>'+
+	    							'<div class=" col">  <button class="btn btn-primary btn_suppr" data-toggle="modal" data-target="#exampleModalLabelsuppr" data-id_tache="'+element.id+'">supprimer</button></div>'+
 								'</li>';
 					cpt++;
 				});
@@ -165,9 +167,8 @@ function supprimerTache(id_tache){
 	$.ajax({
 		url : 'scripts/server.php',
 		type : 'POST',
-		data : {id_tache:id_tache,action:'suppr'},
+		data : {id:id_tache,action:'suppr'},
 		success:function(reponse){
-			alert(reponse);
 			location.reload();
 		}
 	});	
