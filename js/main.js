@@ -61,22 +61,30 @@ $(document).on('click','.btn_suppr',function(){
 	supprimerTache(id_tache)
 });
 
+$(document).on('click','.chk',function(){	
+	myFunction(this,$(this).data("cpt"));
+});
+
 function afficheListeTache(id_user){	
 	let tache = 'azerty';//$('.contenu').val();
 	let cpt =0;
 	$.ajax({
 		url : 'scripts/server.php',
 		type : 'POST',
-		data : {id_user:id_user,action:'voir'},
+		data : {action:'voir'},
 		success:function(reponse){
 			let res_arr = JSON.parse(reponse);
 			console.log(res_arr);
 			if(res_arr[0].id != 'erreur'){
 				res_arr.forEach(element =>{
-					let contenuHtml = '<li class="row">'+
-	  							   '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" value="'+element.id+'"></div>'+
-	    						   '<div class="col">'+
-	        						'<p><span> '+element.tache+'</span></p></div>'+
+					let contenuHtml = '<li class="row">';
+					if(element.etat == 0){
+	  					contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" value="'+element.id+'"></div>';						
+					}else{
+						contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" value="'+element.id+'" checked></div>';						
+					}
+	    			contenuHtml += '<div class="col">'+
+	        						'<p><span id="text_tache'+cpt+' data-cpt="'+cpt+'"> '+element.tache+'</span></p></div>'+
 	    							'<div class=" col"> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">attribuer</button></div>'+
 	    							'<div class=" col">   <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">modifier</button></div>'+
 								'</li>';
@@ -177,4 +185,15 @@ function message(msg,couleur){
     $('#div_message').html(msg);                    
     setTimeout(function(){$('#div_message').fadeOut();},4000);
   } 
+}
+
+function myFunction(elem,cpt) {
+    // Get the output text
+    var text = document.getElementById("text");
+    // If the checkbox is checked, display the output text
+    if (elem.checked == true){
+        document.getElementById("text_tache"+cpt).classList.add('barrer');
+    } else {
+        document.getElementById("text_tache"+cpt).classList.add('nonbarrer');
+    }
 }
