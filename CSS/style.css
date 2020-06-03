@@ -36,3 +36,11 @@ li{
     cursor: pointer;
     margin-top: 5px;
 }
+
+.barrer{
+    text-decoration:line-through;
+}
+
+.nonbarrer{
+    text-decoration:none;
+}
