@@ -22,7 +22,10 @@
 		}elseif($action == 'modif'){
 				//	Code pour la mise à jour des tâches
 
-			}elseif($action == 'suppr'){
+		}elseif($action == 'modif_etat'){
+			//	Code pour la modification de l'état
+			require('valide.php');
+		}elseif($action == 'suppr'){
 				//	Code pour la suppression
 
 		}

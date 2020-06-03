@@ -49,7 +49,7 @@ $(document).on('click','.btn_ajout_t',function(){
 
 $(document).on('click','.btn_modif',function(){		
 	let id_tache = $(this).data("cpt");
-	mettreAjourTache(id_tache);
+	// mettreAjourTache(id_tache);
 });
 
 $(document).on('click','.btn_suppr',function(){	
@@ -60,11 +60,8 @@ $(document).on('click','.btn_suppr',function(){
 
 $(document).on('click','.chk',function(){
 	barrerTexte(this,$(this).data("cpt"));
-	if (elem.checked == true){
-        $("#text_tache"+cpt).addClass('barrer');
-    } else {
-        $("#text_tache"+cpt).removeClass('barrer');
-    }
+	//	Mise à jour état
+	mettreAjourEtat($(this).val(),this,$(this).data("etat"));
 });
 
 function afficheListeTache(){	
@@ -77,24 +74,29 @@ function afficheListeTache(){
 		success:function(reponse){
 			let res_arr = JSON.parse(reponse);
 			console.log(res_arr);
+			let contenuHtml = "";
 			if(res_arr[0].id != 'erreur'){
 				res_arr.forEach(element =>{
-					let contenuHtml = '<li class="row">';
+					contenuHtml += '<li class="row">';
 					if(element.etat == 0){
-	  					contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'"></div>';						
+	  					contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'" data-etat="'+element.etat+'"></div>';						
 					}else{
-						contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'" checked></div>';						
+						contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'" data-etat="'+element.etat+'" checked></div>';						
 					}
-	    			contenuHtml += '<div class="col">'+
-	        						'<p><span id="text_tache'+cpt+'"> '+element.tache+'</span></p></div>'+
+	    			contenuHtml += '<div class="col">';
+
+	    			if(element.etat == 0){
+	        			contenuHtml += '<p><span id="text_tache'+cpt+'" class=""> '+element.tache+'</span></p>';
+	        		}else{
+	        			contenuHtml += '<p><span id="text_tache'+cpt+'" class="barrer"> '+element.tache+'</span></p>';
+					}
+	        		contenuHtml += '</div>'+
 	    							'<div class=" col"> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'+element.id+'">attribuer</button></div>'+
 	    							'<div class=" col">   <button class="btn btn-primary btn_modif" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'+element.id+'">modifier</button></div>'+
 								'</li>';
-					$('.liste_tache').append(contenuHtml);
-					//	Barrer Texte
-					barrerTexte($('chk'+cpt),cpt);
 					cpt++;
 				});
+				$('.liste_tache').html(contenuHtml);
 			}else{
 				alert('Une erreur est survenu lors du chargement des données');
 			}			
@@ -135,14 +137,25 @@ function ajouterTache(tache){
 	});
 }
 
-function mettreAjourTache(id_tache){	
+function mettreAjourTache(id_tache){
+
 	$.ajax({
 		url : 'scripts/server.php',
 		type : 'POST',
 		data : {id:id_tache,action:'modif'},
 		success:function(reponse){
-			// alert(reponse);
-			afficheListeTache();
+			location.reload();
+		}
+	});
+}
+
+function mettreAjourEtat(id_tache,elem,etat){
+	$.ajax({
+		url : 'scripts/server.php',
+		type : 'POST',
+		data : {id:id_tache,etat:etat,action:'modif_etat'},
+		success:function(reponse){
+			// console.log(reponse);
 		}
 	});
 }

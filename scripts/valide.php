@@ -45,7 +45,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']) && isset($_POST['id'])
                 if($result)
                 {
 
-                    echo "Est terminé.";
+                    echo "Est pas terminer.";
 
                 }
 
@@ -69,7 +69,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']) && isset($_POST['id'])
                 if($result)
                 {
 
-                    echo "Est pas terminer.";
+                    echo "Est terminé.";
 
                 }
 
