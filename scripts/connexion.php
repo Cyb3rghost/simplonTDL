@@ -32,7 +32,6 @@ if(!empty($_POST['username']) && !empty($_POST['password']))
                 }else{
                     echo "Connexion impossible. [Nom d'utilisateur / Password incorrect]";
                 }   
-
         }
         else {
         echo "Erreur de connexion à la base de donnée SQLite. <br/><br/>";
