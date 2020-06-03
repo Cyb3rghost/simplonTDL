@@ -16,6 +16,21 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <body>
+<script>
+    function myFunction() {
+        // Get the checkbox
+        var checkBox = document.getElementById("defaultCheck0");
+        // Get the output text
+        var text = document.getElementById("text");
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true){
+            document.getElementById("text").classList.add('barrer');
+        } else {
+            document.getElementById("text").classList.add('nonbarrer');
+        }
+    }
+
+</script>
 <div class="flex">
 <img src="../image/d739fc1c-f8f3-4e8f-8f02-d5ca0da3c533_200x200%20(1).png" alt="">
 </div>
@@ -71,11 +86,35 @@
             </div>
 
 
+                        <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
 
+<!-- la modal pour modifier un todo-->
 
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">Modifier le TODO</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="..."></textarea>
+
+                </div>
+
+            </div>
 
 
             <div class="modal-footer">
@@ -96,50 +135,43 @@
 
 
 
-
-
-
-
-
-
-
 <div class="flex">
 
 <div class="read">
 
     <div style="text-align: center"> <h2>ajouter un TODO  : <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">ajouter</button></h2></div>
 <div class="flex">
-    <ul style="  list-style-type: none">
+    <ul style="  list-style-type: none; margin-right: 5px">
 
         <li class="row">
             <div class=" col">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></div>
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck0" onclick="myFunction()"></div>
             <div class="col">
-            <p>fgddfgdg</p></div>
-            <div class=" col"> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">attribuer</button></div>
-            <div class=" col">   <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">modifier</button></div>
+            <p id="text">fgddfgdgbla blalfjskhsuighsi uvgzt yuisf</p></div>
+            <div class=" col"> <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal1">attribuer</button></div>
+            <div class=" col">   <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal2">modifier</button></div>
         </li>
 
         <li class="row">
                 <div class=" col">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></div>
-            <div class="col"> <p>fgddfgdg</p></div>
-            <div class=" col"> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">attribuer</button></div>
-            <div class=" col">   <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">modifier</button></div>
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" onclick="myFunction()"></div>
+            <div class="col"> <p id="text1">fgddfgdg</p></div>
+            <div class=" col"> <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal1">attribuer</button></div>
+            <div class=" col">  <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal3"> modifier</button></div>
         </li>
         <li class="row">
-            <div class=" col"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></div>
+            <div class=" col"><input class="form-check-input" type="checkbox" value="" id="defaultCheck2" onclick="myFunction()"></div>
             <div class="col">
-                <p>fgddfgdg</p></div>
-            <div class=" col"> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">attribuer</button></div>
-            <div class=" col">   <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">modifier</button></div>
+                <p id="text2">fgddfgdg</p></div>
+            <div class=" col"> <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal1">attribuer</button></div>
+            <div class=" col">   <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal2">modifier</button></div>
         </li>
 <li class="row">
-    <div class=" col"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></div>
+    <div class=" col"><input class="form-check-input" type="checkbox" value="" id="defaultCheck3" onclick="myFunction()"></div>
     <div class="col">
-        <p>fgddfgdg</p></div>
-    <div class=" col"> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">attribuer</button></div>
-    <div class=" col">   <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">modifier</button></div>
+        <p id="text3">fgddfgdg</p></div>
+    <div class=" col"> <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal1">attribuer</button></div>
+    <div class=" col">   <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal2">modifier</button></div>
 </li>
 
     </ul>

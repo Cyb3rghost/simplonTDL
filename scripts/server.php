@@ -7,7 +7,7 @@
 		$action = isset($_POST['action'])?$_POST['action']:$action;		
 		if($action == 'liste_user'){
 			//	Récupération de la liste des utilisateurs
-
+			require('listetaches.php');
 			//echo json_encode($liste_user);
 		}elseif($action == 'voir'){			
 			if(isset($_POST['id_user'])){
