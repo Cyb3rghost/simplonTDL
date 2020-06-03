@@ -79,11 +79,19 @@ function afficheListeTache(){
 				res_arr.forEach(element =>{
 					contenuHtml += '<li class="row">';
 					if(element.etat == 0){
+<<<<<<< HEAD
 	  					contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'" data-etat="'+element.etat+'"></div>';						
 					}else{
 						contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'" data-etat="'+element.etat+'" checked></div>';						
 					}
 	    			contenuHtml += '<div class="col">';
+=======
+	  					contenuHtml += '<div class=" col-2"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'" data-etat="'+element.etat+'"></div>';
+					}else{
+						contenuHtml += '<div class=" col-2"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'" data-etat="'+element.etat+'" checked></div>';
+					}
+	    			contenuHtml += '<div class="col-4">';
+>>>>>>> f97e71c9501c21473220cd942caa1526d9e7519c
 
 	    			if(element.etat == 0){
 	        			contenuHtml += '<p><span id="text_tache'+cpt+'" class=""> '+element.tache+'</span></p>';
@@ -91,8 +99,15 @@ function afficheListeTache(){
 	        			contenuHtml += '<p><span id="text_tache'+cpt+'" class="barrer"> '+element.tache+'</span></p>';
 					}
 	        		contenuHtml += '</div>'+
+<<<<<<< HEAD
 	    							'<div class=" col"> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'+element.id+'">attribuer</button></div>'+
 	    							'<div class=" col">   <button class="btn btn-primary btn_modif" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'+element.id+'">modifier</button></div>'+
+=======
+	    							'<div class=" col-2 "> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'+element.id+'">attribuer</button></div>'+
+
+	    							'<div class=" col-2">   <button class="btn btn-primary btn_modif" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'+element.id+'">modifier</button></div>'+
+						'<div class=" col-2 "> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'+element.id+'">supprimer</button></div>'+
+>>>>>>> f97e71c9501c21473220cd942caa1526d9e7519c
 								'</li>';
 					cpt++;
 				});
