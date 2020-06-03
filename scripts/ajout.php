@@ -32,25 +32,19 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']) && isset($_POST['tache
 
     if($resultdeux)
     {
-
-        header('location: ../dashboard.php');
-
+        // header('location: ../dashboard.php');
+        echo "ok";
     }
     else
     {
-
         echo "Une erreur est survenue lors de la création de la tâche.";
-
-        header('location: ../dashboard.php');
-
+        // header('location: ../dashboard.php');
     }
 
 }
 else
 {
-
     header('Location: ../index.php');
-
 }
 
 ?>

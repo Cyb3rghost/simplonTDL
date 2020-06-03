@@ -37,12 +37,9 @@ $(document).on('click','.btn_ajout_t_u',function(){
 });
 
 $(document).on('click','.btn_valider_aj',function(){
-	let tache = 'azerty';//$('.contenu').val();
-	let etat = 'qwerty';//$('.contenu').val();	
-	let id_user = '1';//$('.contenu').val();		
-	let id_prop = '2';//$('.contenu').val();	
+	let tache = $('.tache').val();
 	//	Ajouter une tâche
-	ajouterTache(id_prop,tache,etat,id_user);	
+	ajouterTache(tache);	
 });
 
 $(document).on('click','.btn_ajout_t',function(){
@@ -68,7 +65,7 @@ function afficheListeTache(id_user){
 	let tache = 'azerty';//$('.contenu').val();
 	let cpt =0;
 	$.ajax({
-		url : 'server.php',
+		url : 'scripts/server.php',
 		type : 'POST',
 		data : {id_user:id_user,action:'voir'},
 		success:function(reponse){
@@ -76,7 +73,14 @@ function afficheListeTache(id_user){
 			console.log(res_arr);
 			if(res_arr[0].id != 'erreur'){
 				res_arr.forEach(element =>{
-					$('.liste_tache').append('<li><input type="checkbox" class="chk" name="chk'+cpt+'" value="'+element.id+'"><span> '+element.tache+'</span></br></li>');
+					let contenuHtml = '<li class="row">'+
+	  							   '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" value="'+element.id+'"></div>'+
+	    						   '<div class="col">'+
+	        						'<p><span> '+element.tache+'</span></p></div>'+
+	    							'<div class=" col"> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">attribuer</button></div>'+
+	    							'<div class=" col">   <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">modifier</button></div>'+
+								'</li>';
+					$('.liste_tache').append(contenuHtml);
 				});
 			}else{
 				alert('Une erreur est survenu lors du chargement des données');
@@ -87,7 +91,7 @@ function afficheListeTache(id_user){
 
 function afficheListeUsers(){	
 	$.ajax({
-		url : 'server.php',
+		url : 'scripts/server.php',
 		type : 'POST',
 		data : {action:'liste_user'},
 		success:function(reponse){
@@ -103,21 +107,24 @@ function afficheListeUsers(){
 	},'json');
 }
 
-function ajouterTache(id_prop,tache,etat,id_user){		
+function ajouterTache(tache){		
 	$.ajax({
-		url : 'server.php',
+		url : 'scripts/server.php',
 		type : 'POST',
-		data : {tache:tache,etat:etat,id_prop:id_prop,id_user:id_user,action:'ajout'},
+		data : {tache:tache,action:'ajout'},
 		success:function(reponse){
-			// alert(reponse);
-			$('.contenu').html(reponse);
+			if(reponse=='ok'){
+				location.replace('dashboard.php');
+			}else{
+				message(reponse,'red');
+			}
 		}
 	});
 }
 
 function mettreAjourTache(id_prop,tache,etat,id_user){	
 	$.ajax({
-		url : 'server.php',
+		url : 'scripts/server.php',
 		type : 'POST',
 		data : {id_tache:id_tache,tache:tache,etat:etat,id_prop:id_prop,id_user:id_user,action:'modif'},
 		success:function(reponse){
@@ -129,7 +136,7 @@ function mettreAjourTache(id_prop,tache,etat,id_user){
 
 function supprimerTache(id_tache){
 	$.ajax({
-		url : 'server.php',
+		url : 'scripts/server.php',
 		type : 'POST',
 		data : {id_tache:id_tache,action:'suppr'},
 		success:function(reponse){
