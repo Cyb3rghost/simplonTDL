@@ -32,7 +32,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']) && isset($_POST['id'])
 
         if($resultdeux)
         {
-            header('location: ../dashboard.php');
+            echo 'ok';
         }
         else
         {

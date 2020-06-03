@@ -76,44 +76,18 @@ $(document).on('click','.chk',function(){
 });
 
 function afficheListeTache(){	
-	let tache = 'azerty';//$('.contenu').val();
-	let cpt =0;
 	$.ajax({
 		url : 'scripts/server.php',
 		type : 'POST',
 		data : {action:'voir'},
 		success:function(reponse){
-			let res_arr = JSON.parse(reponse);
-			console.log(res_arr);
-			let contenuHtml = "";
-			if(res_arr[0].id != 'erreur'){
-				res_arr.forEach(element =>{
-					contenuHtml += '<li class="row">';
-					if(element.etat == 0){
-	  					contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'" data-etat="'+element.etat+'"></div>';						
-					}else{
-						contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'" data-etat="'+element.etat+'" checked></div>';						
-					}
-	    			contenuHtml += '<div class="col">';
-
-	    			if(element.etat == 0){
-	        			contenuHtml += '<p><span id="text_tache'+cpt+'" class=""> '+element.tache+'</span></p>';
-	        		}else{
-	        			contenuHtml += '<p><span id="text_tache'+cpt+'" class="barrer"> '+element.tache+'</span></p>';
-					}
-	        		contenuHtml += '</div>'+
-	    							'<div class=" col"> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'+element.id+'">attribuer</button></div>'+
-	    							'<div class=" col">  <button class="btn btn-primary btn_modif" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'+element.id+'" data-tache="'+element.tache+'">modifier</button></div>'+
-	    							'<div class=" col">  <button class="btn btn-primary btn_suppr" data-toggle="modal" data-target="#exampleModalLabelsuppr" data-id_tache="'+element.id+'">supprimer</button></div>'+
-								'</li>';
-					cpt++;
-				});
-				$('.liste_tache').html(contenuHtml);
+			if(reponse!= 'erreur'){
+				$('.liste_tache').html(reponse);
 			}else{
 				alert('Une erreur est survenu lors du chargement des données');
 			}			
 		}
-	},'json');
+	});
 }
 
 function afficheListeUsers(){	
