@@ -3,7 +3,7 @@ $(document).ready(function(){
 	let id_user = '2';//$('.contenu').val();
 	if(!$('#btn_conn').length){	//	Efectuer les instructions qui suit si le bouton connexion n'éxiste pas (si on n'est pas dans page de connexion)
 		//	Afficher la liste des tâches
-		afficheListeTache(id_user);
+		afficheListeTache();
 	}
 });
 
@@ -22,19 +22,19 @@ $(document).on('click','.btn_ajout_autre_u',function(){
 	ajouterTache(id_prop,tache,etat,id_user);	
 });
 
-$(document).on('click','.btn_ajout_t_u',function(){	
-	let tache = 'azerty';//$('.contenu').val();
-	let etat = 'qwerty';//$('.contenu').val();	
-	let id_user = '1';//$('.contenu').val();		
-	let id_prop = '2';//$('.contenu').val();
-	$('.chk').each(function(){
-		if($(this).is(':checked')){
-			alert($('.chk').is(':checked')+$(this).val());
-		}	
-	});
-	//	Ajouter une tâche
-	ajouterTache(id_prop,tache,etat,id_user);	
-});
+// $(document).on('click','.btn_ajout_t_u',function(){	
+// 	let tache = 'azerty';//$('.contenu').val();
+// 	let etat = 'qwerty';//$('.contenu').val();	
+// 	let id_user = '1';//$('.contenu').val();		
+// 	let id_prop = '2';//$('.contenu').val();
+// 	$('.chk').each(function(){
+// 		if($(this).is(':checked')){
+// 			alert($('.chk').is(':checked')+$(this).val());
+// 		}	
+// 	});
+// 	//	Ajouter une tâche
+// 	ajouterTache(id_prop,tache,etat,id_user);	
+// });
 
 $(document).on('click','.btn_valider_aj',function(){
 	let tache = $('.tache').val();
@@ -47,25 +47,27 @@ $(document).on('click','.btn_ajout_t',function(){
 		afficheListeUsers();		
 });
 
-$(document).on('click','.btn_modif',function(){	
-	let tache = 'azerty';//$('.contenu').val();
-	let etat = 'qwerty';//$('.contenu').val();	
-	let id_user = '1';//$('.contenu').val();		
-	let id_prop = '2';//$('.contenu').val();	
-	mettreAjourTache(id_prop,tache,etat,id_user);
+$(document).on('click','.btn_modif',function(){		
+	let id_tache = $(this).data("cpt");
+	mettreAjourTache(id_tache);
 });
 
 $(document).on('click','.btn_suppr',function(){	
-	let id_tache = '2';//$('.contenu').val();
+	let id_tache = $(this).data("cpt");
 	//	Supprimer une tâche
 	supprimerTache(id_tache)
 });
 
-$(document).on('click','.chk',function(){	
-	myFunction(this,$(this).data("cpt"));
+$(document).on('click','.chk',function(){
+	barrerTexte(this,$(this).data("cpt"));
+	if (elem.checked == true){
+        $("#text_tache"+cpt).addClass('barrer');
+    } else {
+        $("#text_tache"+cpt).removeClass('barrer');
+    }
 });
 
-function afficheListeTache(id_user){	
+function afficheListeTache(){	
 	let tache = 'azerty';//$('.contenu').val();
 	let cpt =0;
 	$.ajax({
@@ -79,16 +81,19 @@ function afficheListeTache(id_user){
 				res_arr.forEach(element =>{
 					let contenuHtml = '<li class="row">';
 					if(element.etat == 0){
-	  					contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" value="'+element.id+'"></div>';						
+	  					contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'"></div>';						
 					}else{
-						contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" value="'+element.id+'" checked></div>';						
+						contenuHtml += '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'+cpt+'" id="chk'+cpt+'" value="'+element.id+'"  data-cpt="'+cpt+'" checked></div>';						
 					}
 	    			contenuHtml += '<div class="col">'+
-	        						'<p><span id="text_tache'+cpt+' data-cpt="'+cpt+'"> '+element.tache+'</span></p></div>'+
-	    							'<div class=" col"> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">attribuer</button></div>'+
-	    							'<div class=" col">   <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">modifier</button></div>'+
+	        						'<p><span id="text_tache'+cpt+'"> '+element.tache+'</span></p></div>'+
+	    							'<div class=" col"> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'+element.id+'">attribuer</button></div>'+
+	    							'<div class=" col">   <button class="btn btn-primary btn_modif" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'+element.id+'">modifier</button></div>'+
 								'</li>';
 					$('.liste_tache').append(contenuHtml);
+					//	Barrer Texte
+					barrerTexte($('chk'+cpt),cpt);
+					cpt++;
 				});
 			}else{
 				alert('Une erreur est survenu lors du chargement des données');
@@ -130,14 +135,14 @@ function ajouterTache(tache){
 	});
 }
 
-function mettreAjourTache(id_prop,tache,etat,id_user){	
+function mettreAjourTache(id_tache){	
 	$.ajax({
 		url : 'scripts/server.php',
 		type : 'POST',
-		data : {id_tache:id_tache,tache:tache,etat:etat,id_prop:id_prop,id_user:id_user,action:'modif'},
+		data : {id:id_tache,action:'modif'},
 		success:function(reponse){
-			alert(reponse);
-			afficheListeTache(id_user);
+			// alert(reponse);
+			afficheListeTache();
 		}
 	});
 }
@@ -187,13 +192,11 @@ function message(msg,couleur){
   } 
 }
 
-function myFunction(elem,cpt) {
-    // Get the output text
-    var text = document.getElementById("text");
-    // If the checkbox is checked, display the output text
+function barrerTexte(elem,cpt) {
+    // Si la case est coché on barre le text
     if (elem.checked == true){
-        document.getElementById("text_tache"+cpt).classList.add('barrer');
+        $("#text_tache"+cpt).addClass('barrer');
     } else {
-        document.getElementById("text_tache"+cpt).classList.add('nonbarrer');
+        $("#text_tache"+cpt).removeClass('barrer');
     }
 }
