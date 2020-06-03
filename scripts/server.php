@@ -26,7 +26,7 @@
 			//	Code pour la modification de l'état
 			require('valide.php');
 		}elseif($action == 'suppr'){
-				//	Code pour la suppression
-
+			//	Code pour la suppression
+			require('suppression.php');
 		}
 	}

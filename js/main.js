@@ -93,6 +93,7 @@ function afficheListeTache(){
 	        		contenuHtml += '</div>'+
 	    							'<div class=" col"> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'+element.id+'">attribuer</button></div>'+
 	    							'<div class=" col">   <button class="btn btn-primary btn_modif" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'+element.id+'">modifier</button></div>'+
+	    							'<div class=" col">   <button class="btn btn-primary btn_suppr" data-toggle="modal" data-target="#exampleModalLabelsuppr" data-id_tache="'+element.id+'">supprimer</button></div>'+
 								'</li>';
 					cpt++;
 				});
