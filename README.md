@@ -13,3 +13,6 @@ En tant qu'utilisateur (je possède mon espace perso).
 En tant qu'utilisateur je peux affecter une tâche à un autre utilisateur.
 
 En tant qu'utilisateur je peux modifier que les tâches que je me suis attitré.
+
+COMMANDE POUR PUSH :
+
