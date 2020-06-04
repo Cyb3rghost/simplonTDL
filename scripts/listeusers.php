@@ -1,6 +1,6 @@
 <?php session_start();
 
-if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
+if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo'])) // si la personne est connectée alors //
 {
 
     include('connexionbdd.php');
