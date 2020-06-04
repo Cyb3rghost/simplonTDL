@@ -46,7 +46,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Créer un TODO</h5>
+                <h5 class="modal-title text-center" id="exampleModalLabel">Créer un TODO</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -71,7 +71,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel1">Attribuer un TODO</h5>
+                <h5 class="modal-title text-center" id="exampleModalLabel1">Attribuer un TODO</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -80,8 +80,15 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
                 <div class="input-group mb-3">
 
                 <select class="custom-select" id="liste_u">
-                    <!-- Zone d'affichage de la liste des utilisateur -->
+                    <!-- Zone d'affichage de la liste des utilisateurs -->
                 </select>
+                </div>
+                <div class="flex">
+                    <ul class='liste_u_aff'>
+                        <!-- Zone d'affichage de la liste des utilisateurs affécté -->
+                        <li>user1<span class='ml-2 mr-2 badge badge-secondary text-wrap' style="">X</span></li>
+                        <li>user2<span class='ml-2 mr-2 badge badge-secondary text-wrap' style="">X</span></li>
+                    </ul>
                 </div>
 
             </div>
@@ -101,7 +108,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modifier le TODO</h5>
+                <h5 class="modal-title text-center" id="exampleModalLabel">Modifier le TODO</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -125,14 +132,15 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
 
 <div class="flex">
 
-<div class="read">	<?php
-    echo "<div style='text-align: center; height: 50px'> <h2>TODOList de ".$_SESSION['pseudo']."   <button type=\"button\" class=\"btn btn-primary test\" data-toggle=\"modal\" data-target=\"#exampleModal\" >ajouter un TODO </button></h2></div>";
+<div class="read">	
+    <?php
+        echo "<div style='text-align: center; height: 50px'> <h2>TODOList de ".$_SESSION['pseudo']."   <button type=\"button\" class=\"btn btn-primary test\" data-toggle=\"modal\" data-target=\"#exampleModal\" >ajouter un TODO </button></h2></div>";
     ?>
 <div class="flex">
     <ul class='liste_tache' style="  list-style-type: none">
     	<!-- Zone d'affichage de la liste des tâches -->
     </ul>
-</c>
+</div>
 <div>	
     <input type="hidden" name="" id='id_tache'>
     <input type="hidden" name="" id='tache'>

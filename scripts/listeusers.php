@@ -14,7 +14,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
     foreach ($stmt as $row) {    
         array_push($arr_res, array('id' => $row['id'],'nom' => $row['nom']));    
     }
-    var_dump( $arr_res);
+    // var_dump($arr_res);
 }
 else
 {

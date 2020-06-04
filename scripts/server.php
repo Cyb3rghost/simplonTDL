@@ -7,9 +7,8 @@
 		$action = isset($_POST['action'])?$_POST['action']:$action;		
 		if($action == 'liste_user'){
 			//	Récupération de la liste des utilisateurs
-			$liste_user = array(array('id'=>'3','nom' => 'simplondeux', 'test' => '1234'),array('id'=>'1','nom' => 'Cédrick', 'password' => '1234'),array('id'=>'2', 'nom' => 'Ludovic', 'password' => '123'),array('id'=>'4', 'nom' => 'Cyprien', 'password' => '12345'),array('id'=>'5', 'nom' =>'Abel', 'password' => '123;
-45'));
-			echo json_encode($liste_user);
+			require('listeusers.php');	
+			echo json_encode($arr_res);
 		}elseif($action == 'voir'){		
 				//	Récupération de la liste des tâches
 				require('listetaches.php');	
@@ -67,5 +66,8 @@
 		}elseif($action == 'attrib'){
 			//	Code pour l'attribution'
 			require('attribution.php');
+		}elseif($action == 'liste_user_aff'){
+			//	Code pour l'attribution'
+			require('listeusersaffecte.php');
 		}
 	}

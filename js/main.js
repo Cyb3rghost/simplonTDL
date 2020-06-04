@@ -121,6 +121,28 @@ function afficheListeUsers(){
 	},'json');
 }
 
+function afficheListeUsersAffecte(){	
+	$.ajax({
+		url : 'scripts/server.php',
+		type : 'POST',
+		data : {action:'liste_user_aff'},
+		success:function(reponse){
+			let res_arr = JSON.parse(reponse);
+			let contenuHtml = '';
+			if(res_arr[0].id != 'erreur'){
+				contenuHtml += '<option selected>Attribuer à un utilisateur</option>';
+				res_arr.forEach(element =>{
+					contenuHtml += '<option value="'+element.id+'">'+element.nom+'</option>';
+				});
+
+				$('#liste_u_aff').html(contenuHtml);
+			}else{
+				messageModal('Message','Une erreur est survenu lors du chargement de la liste des utilisateurs');
+			}			
+		}
+	},'json');
+}
+
 function ajouterTache(tache){		
 	$.ajax({
 		url : 'scripts/server.php',
