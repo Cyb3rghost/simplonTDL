@@ -20,10 +20,9 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']) && isset($_POST['id'])
     {
 
         $sqldeux = 'DELETE FROM affecter '
-                    . 'WHERE user_id = :iduser AND tache_id = :idtache';
+                    . 'WHERE tache_id = :idtache';
 
         $stmtdeux = $pdo->prepare($sqldeux);
-        $stmtdeux->bindValue(':iduser', $_SESSION['id']);
         $stmtdeux->bindValue(':idtache', $idTache);
 
         $resultdeux = $stmtdeux->execute();
