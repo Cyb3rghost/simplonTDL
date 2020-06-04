@@ -10224,7 +10224,7 @@
   /* BTN TEST */
 
   .btn-testing {
-        color: #fff;
+        color: black;
         background-color: #B7B7E1 !important;
         border-color: #B7B7E1 !important;
     }
@@ -10235,12 +10235,31 @@
     
  }
 
+  .bg-header {
+
+    background-color: #B7B7E1 !important;
+
+  }
+
+ .bg-body {
+
+    background-color: #F6F4F4 !important;
+
+ }
+
+ .bg-footer {
+
+  background-color: #DBC2FF !important;
+
+ }
+
  .cadrePerso {
 
     width: 100%;
     min-height: 50px;
     height: auto;
     padding: 10px;
+    border-bottom: 1px solid black;
 
 }
 
