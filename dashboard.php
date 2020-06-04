@@ -7,7 +7,8 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
 	<!DOCTYPE html>
 	<html lang="en">
 	<head>
-	    <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	    <title>TODO List</title>
 
 	<!-- bootstrapp-->
@@ -15,8 +16,11 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	    <link rel="stylesheet" href="CSS/style.css">
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-	    <link rel="stylesheet" href="CSS/style.css">
         <link rel="icon" href="image/test.png" />
+        <!-- jquery-confirm.css-->
+        <link rel="stylesheet" href="lib/jquery-confirm/jquery-confirm.css">
+        <!-- CSS perso -->
+        <link rel="stylesheet" href="CSS/style.css">
     <!-- JS, Popper.js, and jQuery -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <script src="https://kit.fontawesome.com/6bffc813f0.js" crossorigin="anonymous"></script>
@@ -24,6 +28,9 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <!-- jquery-confirm.js-->
+        <script type="text/javascript" src="lib/jquery-confirm/jquery-confirm.js"></script>
+        <!-- JS perso -->
 	    <script type="text/javascript" src="js/main.js"></script>
 	</head>
 	<body>
@@ -54,6 +61,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                 <button type="button" class="btn btn-primary" id='btn_valider_aj'>Submit</button>
             </div>
+            <div class='text-center mb-3 div_message_modal'></div>
         </div>
     </div>
 </div>
@@ -72,7 +80,6 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
                 <div class="input-group mb-3">
 
                 <select class="custom-select" id="liste_u">
-                    <option selected>Attribuer à un utilisateur</option>
                     <!-- Zone d'affichage de la liste des utilisateur -->
                 </select>
                 </div>
@@ -80,8 +87,9 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-primary" id='btn_valider_attrib'>Submit</button>
             </div>
+            <div class='text-center mb-3 div_message_modal'></div>
         </div>
     </div>
 </div>
@@ -110,6 +118,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                 <button type="button" class="btn btn-primary" id='btn_valider_modif'>Submit</button>
             </div>
+            <div class='text-center mb-3 div_message_modal'></div>
         </div>
     </div>
 </div>

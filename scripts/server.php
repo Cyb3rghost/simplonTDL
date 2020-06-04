@@ -7,7 +7,9 @@
 		$action = isset($_POST['action'])?$_POST['action']:$action;		
 		if($action == 'liste_user'){
 			//	Récupération de la liste des utilisateurs
-			//echo json_encode($liste_user);
+			$liste_user = array(array('id'=>'3','nom' => 'simplondeux', 'test' => '1234'),array('id'=>'1','nom' => 'Cédrick', 'password' => '1234'),array('id'=>'2', 'nom' => 'Ludovic', 'password' => '123'),array('id'=>'4', 'nom' => 'Cyprien', 'password' => '12345'),array('id'=>'5', 'nom' =>'Abel', 'password' => '123;
+45'));
+			echo json_encode($liste_user);
 		}elseif($action == 'voir'){		
 				//	Récupération de la liste des tâches
 				require('listetaches.php');	
@@ -34,7 +36,7 @@
 
 					if($element['id_prop']==='1'){
 			    		$contenuHtml .= '</div>'.
-							'<div class=" col"> <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'.$element['id'].'">attribuer</button></div>'.
+							'<div class=" col"> <button class="btn btn-primary btn_attrib" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'.$element['id'].'">attribuer</button></div>'.
 							'<div class=" col">  <button class="btn btn-primary btn_modif" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'.$element['id'].'" data-tache="'.$element['tache'].'">modifier</button></div>'.
 							'<div class=" col">  <button class="btn btn-primary btn_suppr" data-toggle="modal" data-target="#exampleModalLabelsuppr" data-id_tache="'.$element['id'].'">supprimer</button></div>';
 					}else{
@@ -62,5 +64,8 @@
 		}elseif($action == 'suppr'){
 			//	Code pour la suppression
 			require('suppression.php');
+		}elseif($action == 'attrib'){
+			//	Code pour l'attribution'
+			require('attribution.php');
 		}
 	}

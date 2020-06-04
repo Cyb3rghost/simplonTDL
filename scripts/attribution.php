@@ -1,10 +1,10 @@
 <?php session_start();
 
-if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']) && isset($_GET['idtache']) && isset($_GET['iduser']))
+if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']) && isset($_POST['idtache']) && isset($_POST['iduser']))
 {
 
-    $idTache = $_GET['idtache'];
-    $idUser = $_GET['iduser'];
+    $idTache = $_POST['idtache'];
+    $idUser = $_POST['iduser'];
     $proprietaire = 0;
 
     $pdo = new PDO('sqlite:../simplonn.db');
@@ -38,13 +38,15 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']) && isset($_GET['idtach
         if($resultdeux)
         {
 
-            header('location: ../dashboard.php');
+            // header('location: ../dashboard.php');
+            echo 'ok';
 
         }
         else
         {
 
-            header('location: ../dashboard.php');
+            // header('location: ../dashboard.php');
+            echo 'Echec d\'attribution de la tâche';
 
         }
 

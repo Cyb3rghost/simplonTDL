@@ -43,9 +43,18 @@ $(document).on('click','#btn_valider_aj',function(e){
 	ajouterTache(tache);	
 });
 
-$(document).on('click','.btn_ajout_t',function(e){
+$(document).on('click','.btn_attrib',function(e){	
+	$('#id_tache').val($(this).data("id_tache"));
 	//	Afficher la liste des utilisateurs	
-		afficheListeUsers();		
+	afficheListeUsers();		
+});
+
+$(document).on('click','#btn_valider_attrib',function(e){		
+	e.preventDefault();
+	let id_tache = $('#id_tache').val();
+	let id_user_sel = $('#liste_u option:selected').val();
+	//	Attribuer tâche
+	atribuerTache(id_tache,id_user_sel);
 });
 
 $(document).on('click','.btn_modif',function(e){		
@@ -84,7 +93,7 @@ function afficheListeTache(){
 			if(reponse!= 'erreur'){
 				$('.liste_tache').html(reponse);
 			}else{
-				alert('Une erreur est survenu lors du chargement des données');
+				messageAlert('Message','Une erreur est survenu lors du chargement des données');
 			}			
 		}
 	});
@@ -97,12 +106,16 @@ function afficheListeUsers(){
 		data : {action:'liste_user'},
 		success:function(reponse){
 			let res_arr = JSON.parse(reponse);
+			let contenuHtml = '';
 			if(res_arr[0].id != 'erreur'){
+				contenuHtml += '<option selected>Attribuer à un utilisateur</option>';
 				res_arr.forEach(element =>{
-					$('#liste_u').append('<option value="'+element.id+'">'+element.nom+'</option>');
+					contenuHtml += '<option value="'+element.id+'">'+element.nom+'</option>';
 				});
+
+				$('#liste_u').html(contenuHtml);
 			}else{
-				alert('Une erreur est survenu lors du chargement des données');
+				messageModal('Message','Une erreur est survenu lors du chargement de la liste des utilisateurs');
 			}			
 		}
 	},'json');
@@ -117,7 +130,7 @@ function ajouterTache(tache){
 			if(reponse=='ok'){
 				location.replace('dashboard.php');
 			}else{
-				message(reponse,'red');
+				messageModal(reponse,'red');
 			}
 		}
 	});
@@ -131,9 +144,30 @@ function mettreAjourTache(id_tache,tache){
 		data : {id:id_tache,tache:tache,action:'modif'},
 		success:function(reponse){
 			if(reponse=='ok'){
-				location.replace('dashboard.php');
+				messageAlert('Message','Mise à jour de la tâche effectué avec succès');
+				setTimeout(function(){
+					location.replace('dashboard.php');
+				},1500);
 			}else{
-				message(reponse,'red');
+				messageModal(reponse,'red');
+			}
+		}
+	});
+}
+
+function atribuerTache(id_tache,id_user){
+	$.ajax({
+		url : 'scripts/server.php',
+		type : 'POST',
+		data : {idtache:id_tache,iduser:id_user,action:'attrib'},
+		success:function(reponse){console.log(reponse);
+			if(reponse=='ok'){
+				messageAlert('Message','Attribution de tâche effectué avec succès');
+				setTimeout(function(){
+					location.replace('dashboard.php');
+				},1500);
+			}else{
+				messageModal(reponse,'red');
 			}
 		}
 	});
@@ -165,9 +199,9 @@ function authentification(){
 	let username = $('#username').val();
 	let password = $('#password').val();
 	if(username == ''){
-		alert('Veuillez renseigner votre Username');
+		messageAlert('Message','Veuillez renseigner votre Username');
 	}else if(password == ''){
-		alert('Veuillez renseigner votre Mot de passe');
+		messageAlert('Message','Veuillez renseigner votre Mot de passe');
 	}else{			
 		$.ajax({
 			url : 'scripts/server.php',
@@ -185,6 +219,16 @@ function authentification(){
 	}
 }
 
+function barrerTexte(elem,cpt) {
+    // Si la case est coché on barre le text
+    if (elem.checked == true){
+        $("#text_tache"+cpt).addClass('barrer');
+    } else {
+        $("#text_tache"+cpt).removeClass('barrer');
+    }
+}
+
+
 function message(msg,couleur){
   if($('#div_message').length){ 
     $('#div_message').css({"color":couleur}); 
@@ -194,11 +238,20 @@ function message(msg,couleur){
   } 
 }
 
-function barrerTexte(elem,cpt) {
-    // Si la case est coché on barre le text
-    if (elem.checked == true){
-        $("#text_tache"+cpt).addClass('barrer');
-    } else {
-        $("#text_tache"+cpt).removeClass('barrer');
-    }
+//  Définition de fonction d'affichage de message
+function messageModal(msg,couleur){
+  if($('.div_message_modal').length){ 
+    $('.div_message_modal').css({"color":couleur}); 
+    $('.div_message_modal').fadeIn();      
+    $('.div_message_modal').html(msg);                    
+    setTimeout(function(){$('.div_message_modal').fadeOut();},4000);
+  } 
+}
+
+//  Définition de fonction d'affichage de message
+function messageAlert(titre,msg){
+  $.alert({
+    title: titre,
+    content: msg,
+  });
 }
