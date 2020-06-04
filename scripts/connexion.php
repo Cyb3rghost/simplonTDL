@@ -3,8 +3,8 @@
 if(!empty($_POST['username']) && !empty($_POST['password']))
 {
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username =htmlentities($_POST['username']);
+    $password = htmlentities($_POST['password']);
     $secure = md5($password);
     $count = 0;
 

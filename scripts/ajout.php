@@ -6,7 +6,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']) && isset($_POST['tache
     include('connexionbdd.php');
 
     
-    $tache = $_POST['tache'];
+    $tache = htmlentities($_POST['tache']);
     $proprietaire = 1;
     $etat = 0;
 
