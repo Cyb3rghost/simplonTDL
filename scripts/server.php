@@ -35,7 +35,7 @@
 
 					if($element['id_prop']==='1'){
 			    		$contenuHtml .= '</div>'.
-							'<div class=" col"> <button class="btn btn-primary btn_attrib" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'.$element['id'].'">attribuer</button></div>'.
+							'<div class=" col"> <button class="btn btn-primary btn_attrib" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'.$element['id'].'" data-tache="'.$element['tache'].'">attribuer</button></div>'.
 							'<div class=" col">  <button class="btn btn-primary btn_modif" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'.$element['id'].'" data-tache="'.$element['tache'].'">modifier</button></div>'.
 							'<div class=" col">  <button class="btn btn-primary btn_suppr" data-toggle="modal" data-target="#exampleModalLabelsuppr" data-id_tache="'.$element['id'].'">supprimer</button></div>';
 					}else{
@@ -52,22 +52,26 @@
 				echo 'erreur';
 			}
 		}elseif($action == 'ajout'){
-			//	Code pour l'ajout
+			//	Ajout de tâche
 			require('ajout.php');
 		}elseif($action == 'modif'){
-			//	Code pour la mise à jour des tâches			
+			//	Mise à jour des tâches			
 			require('modification.php');
 		}elseif($action == 'modif_etat'){
-			//	Code pour la modification de l'état
+			//	Modification de l'état
 			require('valide.php');
 		}elseif($action == 'suppr'){
-			//	Code pour la suppression
+			//	Suppression tâche
 			require('suppression.php');
 		}elseif($action == 'attrib'){
-			//	Code pour l'attribution'
+			//	Aattribution
 			require('attribution.php');
 		}elseif($action == 'liste_user_aff'){
-			//	Code pour l'attribution'
-			require('listeusersaffecte.php');
+			//	Affichage de la liste des utilisateur affecté à une tâche
+			require('listeutilisateursattribuer.php');
+			echo json_encode($arr_res);
+		}elseif($action == 'suppr_affect'){
+			//	Suppression de affectation d'un utilisateur
+			require('suppression_attribution.php');
 		}
 	}

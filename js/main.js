@@ -44,9 +44,15 @@ $(document).on('click','#btn_valider_aj',function(e){
 });
 
 $(document).on('click','.btn_attrib',function(e){	
-	$('#id_tache').val($(this).data("id_tache"));
+	$('#id_tache').val($(this).data("id_tache"));	
+	$('#tache').val($(this).data("tache"));	
+	let id_tache = $('#id_tache').val();
+	let tache = $('#tache').val();
+	$('#tacheToAttr').html("Tâche : "+tache);		
 	//	Afficher la liste des utilisateurs	
-	afficheListeUsers();		
+	afficheListeUsers();
+	//	Afficher la liste des utilisateurs affecté à la tâche séléctionné	
+	afficheListeUsersAffecte(id_tache);		
 });
 
 $(document).on('click','#btn_valider_attrib',function(e){		
@@ -76,6 +82,13 @@ $(document).on('click','.btn_suppr',function(e){
 	let id_tache = $(this).data("id_tache");
 	//	Supprimer une tâche
 	supprimerTache(id_tache);
+});
+
+$(document).on('click','.btn_suppr_affect',function(e){	
+	e.preventDefault();
+	let id_affectation = $(this).data("id_affectation");
+	//	Supprimer l'affectation d'un utilisateur
+	supprimerAffectation(id_affectation);
 });
 
 $(document).on('click','.chk',function(){
@@ -121,26 +134,51 @@ function afficheListeUsers(){
 	},'json');
 }
 
-function afficheListeUsersAffecte(){	
+function afficheListeUsersAffecte(id_tache){
 	$.ajax({
 		url : 'scripts/server.php',
 		type : 'POST',
-		data : {action:'liste_user_aff'},
+		data : {idtache:id_tache,action:'liste_user_aff'},
 		success:function(reponse){
 			let res_arr = JSON.parse(reponse);
 			let contenuHtml = '';
 			if(res_arr[0].id != 'erreur'){
-				contenuHtml += '<option selected>Attribuer à un utilisateur</option>';
 				res_arr.forEach(element =>{
-					contenuHtml += '<option value="'+element.id+'">'+element.nom+'</option>';
+					contenuHtml += '<li >'+element.nom+'<span class="ml-2 mr-2 badge badge-secondary text-wrap btn_suppr_affect" data-id_affectation = "'+element.id_affectation+'">X</span></li>';
 				});
 
-				$('#liste_u_aff').html(contenuHtml);
+				$('.liste_u_aff').html(contenuHtml);
 			}else{
 				messageModal('Message','Une erreur est survenu lors du chargement de la liste des utilisateurs');
 			}			
 		}
 	},'json');
+}
+
+function supprimerAffectation(id_affectation){
+	 $.confirm({
+	    title: 'Confirmation',
+	    content: 'Vous êtes êtes sur le point de supprimer l\'affectation de cette utilisateur à cette tâche, voulez-vous continuer?',
+	    buttons: {
+	        OUI: function () {	           
+				$.ajax({
+					url : 'scripts/server.php',
+					type : 'POST',
+					data : {id:id_affectation,action:'suppr_affect'},
+					success:function(reponse){
+						if(reponse=='ok'){
+							location.replace('dashboard.php');
+						}else{
+							messageModal(reponse,'red');
+						}
+					}
+				});	
+	        },
+	        NON: function () {
+	           // Ne rien effectuer
+	         }
+	    }
+	  });
 }
 
 function ajouterTache(tache){		

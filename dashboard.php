@@ -55,8 +55,6 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
                 <textarea class="form-control tache" id="exampleFormControlTextareaAjoutTache" rows="3" placeholder="..."></textarea>
             </div>
 
-
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                 <button type="button" class="btn btn-primary" id='btn_valider_aj'>Submit</button>
@@ -77,6 +75,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
                 </button>
             </div>
             <div class="modal-body">
+                <h4 class='text-center' id="tacheToAttr"><!-- Nom de la tâche --></h4>
                 <div class="input-group mb-3">
 
                 <select class="custom-select" id="liste_u">
@@ -86,8 +85,6 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
                 <div class="flex">
                     <ul class='liste_u_aff'>
                         <!-- Zone d'affichage de la liste des utilisateurs affécté -->
-                        <li>user1<span class='ml-2 mr-2 badge badge-secondary text-wrap' style="">X</span></li>
-                        <li>user2<span class='ml-2 mr-2 badge badge-secondary text-wrap' style="">X</span></li>
                     </ul>
                 </div>
 
