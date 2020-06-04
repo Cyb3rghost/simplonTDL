@@ -76,6 +76,7 @@ $(document).on('click','#btn_valider_modif',function(e){
 	e.preventDefault();
 	let tache = $('#exampleFormControlTextareaModifTache').val();
 	let id_tache = $('#id_tache').val();
+	//	Mise à jour de tâhce
 	mettreAjourTache(id_tache,tache);
 });
 
@@ -99,6 +100,7 @@ $(document).on('click','.chk',function(){
 	mettreAjourEtat($(this).val(),this,$(this).data("etat"));
 });
 
+//	Fonction d'affichage de liste de tâches
 function afficheListeTache(){	
 	$.ajax({
 		url : 'scripts/server.php',
@@ -114,6 +116,7 @@ function afficheListeTache(){
 	});
 }
 
+//	Fonction d'affichage de liste d'utilisateur
 function afficheListeUsers(){	
 	$.ajax({
 		url : 'scripts/server.php',
@@ -136,6 +139,7 @@ function afficheListeUsers(){
 	},'json');
 }
 
+//	Fonction d'affichage liste utilisateur affectés à une tâche
 function afficheListeUsersAffecte(id_tache){
 	$.ajax({
 		url : 'scripts/server.php',
@@ -157,6 +161,7 @@ function afficheListeUsersAffecte(id_tache){
 	},'json');
 }
 
+//	Fonction d'affectation d'utilisateur
 function supprimerAffectation(id_affectation){
 	 $.confirm({
 	    title: 'Confirmation',
@@ -183,6 +188,7 @@ function supprimerAffectation(id_affectation){
 	  });
 }
 
+//	Fonction d'ajout des tâches
 function ajouterTache(tache){		
 	$.ajax({
 		url : 'scripts/server.php',
@@ -198,6 +204,7 @@ function ajouterTache(tache){
 	});
 }
 
+//	Fonction de mise à jour des tâches
 function mettreAjourTache(id_tache,tache){
 
 	$.ajax({
@@ -216,7 +223,7 @@ function mettreAjourTache(id_tache,tache){
 		}
 	});
 }
-
+//	Fonction d'attribution de tâche
 function atribuerTache(id_tache,id_user){
 	$.ajax({
 		url : 'scripts/server.php',
@@ -235,6 +242,7 @@ function atribuerTache(id_tache,id_user){
 	});
 }
 
+//	Fonction de mise à jour des états
 function mettreAjourEtat(id_tache,elem,etat){
 	$.ajax({
 		url : 'scripts/server.php',
@@ -246,6 +254,7 @@ function mettreAjourEtat(id_tache,elem,etat){
 	});
 }
 
+//	Fonction de suppression de tâches
 function supprimerTache(id_tache){
 	 $.confirm({
 	    title: 'Confirmation',
@@ -268,6 +277,7 @@ function supprimerTache(id_tache){
 	  });
 }
 
+//	Fonction pour l'authentification des utilisateurs
 function authentification(){
 	let username = $('#username').val();
 	let password = $('#password').val();
@@ -292,6 +302,7 @@ function authentification(){
 	}
 }
 
+//	Fonvction pour barrer les textes pour les tâches connéctés
 function barrerTexte(elem,cpt) {
     // Si la case est coché on barre le text
     if (elem.checked == true){
@@ -302,7 +313,7 @@ function barrerTexte(elem,cpt) {
     location.reload();
 }
 
-
+//  Définition de fonction d'affichage de message
 function message(msg,couleur){
   if($('#div_message').length){ 
     $('#div_message').css({"color":couleur}); 
@@ -312,7 +323,7 @@ function message(msg,couleur){
   } 
 }
 
-//  Définition de fonction d'affichage de message
+//  Définition de fonction d'affichage de message dans le modal
 function messageModal(msg,couleur){
   if($('.div_message_modal').length){ 
     $('.div_message_modal').css({"color":couleur}); 

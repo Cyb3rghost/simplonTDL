@@ -10267,7 +10267,7 @@
     text-decoration:line-through;
 }
 
-.btn_attrib:hover, .btn_modif:hover, .btn_suppr:hover{
+.btn_attrib:hover, .btn_modif:hover, .btn_suppr:hover, .btn_suppr_affect:hover{
   cursor:pointer;
 }
 
