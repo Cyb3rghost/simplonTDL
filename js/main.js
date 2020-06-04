@@ -299,6 +299,7 @@ function barrerTexte(elem,cpt) {
     } else {
         $("#text_tache"+cpt).removeClass('barrer');
     }
+    location.reload();
 }
 
 
