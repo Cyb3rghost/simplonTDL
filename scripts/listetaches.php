@@ -3,9 +3,7 @@
 if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
 {
 
-    $pdo = new PDO('sqlite:../simplonn.db');
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // ERRMODE_WARNING | ERRMODE_EXCEPTION | ERRMODE_SILENT
+    include('connexionbdd.php');
     
     $stmt = $pdo->prepare("SELECT taches.id,user_id,tache,etat,proprietaire FROM affecter INNER JOIN taches ON taches.id = affecter.tache_id WHERE user_id = :userid");
     $stmt->bindValue(':userid', $_SESSION['id']);

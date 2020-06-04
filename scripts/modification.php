@@ -3,9 +3,7 @@
 if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']) && isset($_POST['tache']))
 {
  
-    $pdo = new PDO('sqlite:../simplonn.db');
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // ERRMODE_WARNING | ERRMODE_EXCEPTION | ERRMODE_SILENT
+    include('connexionbdd.php');
 
     
     $tache = $_POST['tache'];
