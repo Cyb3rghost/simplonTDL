@@ -5,19 +5,18 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']) && isset($_POST['idtac
 
     $idTache = $_POST['idtache'];
 
+    //inclue fichier de connection à la base de données
     include('connexionbdd.php');
     
+    //préparation de la requete
     $stmt = $pdo->prepare("SELECT users.nom as nom, affecter.id as id_affectation FROM affecter INNER JOIN users ON users.id = affecter.user_id WHERE tache_id = :idtache");
     $stmt->bindValue(':idtache', $idTache);
+    //execution de la requete
     $stmt->execute();
-
-    // foreach ($stmt as $row) { 
-
-    //     echo $row['nom'];
-
-    // }
+    //creation d'un tableau qui recuperera les données la requete
     $arr_res = array();
     $erreur = 0;    //  Variable qui sera exploité du côté du fichier server.php pour savoir s'il y eu une erreur ou pas (valeur 0 indique pas d'erreur et 1 indiqu'il y a eu d'erreur)
+    //insertion des données dans le tableau
     foreach ($stmt as $row) {    
         array_push($arr_res, array('id_affectation' => $row['id_affectation'],'nom' => $row['nom']));    
     }
@@ -25,7 +24,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']) && isset($_POST['idtac
 }
 else
 {
-
+    //redirection vers la page de login
     header('location: index.php');
 
 }
