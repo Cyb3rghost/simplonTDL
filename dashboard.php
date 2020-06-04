@@ -35,7 +35,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
             <nav class="navbar navbar-light bg-test">
                 <a class="navbar-brand">ToDoList Simplon</a>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Déconnexion</a></li>
+                    <li><a href="scripts/deconnexion.php"><span class="glyphicon glyphicon-user"></span> Déconnexion</a></li>
                 </ul>
             </nav>
 
