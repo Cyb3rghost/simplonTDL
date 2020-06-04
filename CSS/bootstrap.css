@@ -10252,5 +10252,17 @@
   cursor:pointer;
 }
 
+.btn-primary{
+    background-color: #B7B7E1 !important;
+    border-color: #B7B7E1 !important;
+
+}
+/*
+.btn-primary:hover{
+    background-color: #DBC2FF !important;
+    border-color: #DBC2FF !important;
+}
+*/
+
   
  
