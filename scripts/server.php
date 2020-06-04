@@ -35,12 +35,22 @@
 						}                       
                     	$contenuHtml .= '</div>';
 	                $contenuHtml .= '</div>';
-	                $contenuHtml .= '<div class="col-6 text-center">';
-	                    $contenuHtml .= '<img width="35" height="35" src="image/attribution.png" class="btn_attrib"  title="Attribuer une tâche" alt="" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'.$element['id'].'" data-tache="'.$element['tache'].'">'; 
-	                    $contenuHtml .= '<img width="35" height="35" src="image/update.png" class="btn_modif" title="Mise à jour d\'une tâche" alt="" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'.$element['id'].'" data-tache="'.$element['tache'].'"> ';
-	                    $contenuHtml .= '<img width="35" height="35" src="image/supprimer.png" class="btn_suppr" title="Supprimer" alt="" data-toggle="modal" data-target="#exampleModalLabelsuppr" data-id_tache="'.$element['id'].'"> ';                   
-	                $contenuHtml .= '</div></div></div>';
-
+		            $contenuHtml .= '<div class="col-6 text-center">';
+	                if($element['id_prop']==='1'){
+	                	if($element['etat'] == 0){
+		                    $contenuHtml .= '<img width="35" height="35" src="image/attribution.png" class="btn_attrib"  title="Attribuer une tâche" alt="" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'.$element['id'].'" data-tache="'.$element['tache'].'">'; 
+	                    	$contenuHtml .= '<img width="35" height="35" src="image/update.png" class="btn_modif" title="Mise à jour d\'une tâche" alt="" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'.$element['id'].'" data-tache="'.$element['tache'].'"> ';
+		                }else{
+		                    $contenuHtml .= '<img width="35" height="35" src="image/vide.png">'; 
+	                    	$contenuHtml .= '<img width="35" height="35" src="image/vide.png""> ';
+		                }
+	                    $contenuHtml .= '<img width="35" height="35" src="image/supprimer.png" class="btn_suppr" title="Supprimer" alt="" data-toggle="modal" data-target="#exampleModalLabelsuppr" data-id_tache="'.$element['id'].'"> ';
+		            }else{
+						$contenuHtml .=	'<div style="color:red">Accès restreint</div>';
+					}
+					$contenuHtml .= '</div>';
+					$contenuHtml .= '</div>';
+					$contenuHtml .= '</div>';
 					$cpt++;
 				}
 				echo $contenuHtml;
