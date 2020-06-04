@@ -82,12 +82,13 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
                         <div class="modal-body bg-body">
                             <h4 class='text-center' id="tacheToAttr"><!-- Nom de la tâche --></h4>
                             <div class="input-group mb-3">
-
                             <select class="custom-select" id="liste_u">
                                 <!-- Zone d'affichage de la liste des utilisateurs -->
                             </select>
                             </div>
                             <div class="flex">
+                            Liste des utilisateurs affectés à la tâche :
+                            <hr/>
                                 <ul class='liste_u_aff'>
                                     <!-- Zone d'affichage de la liste des utilisateurs affécté -->
                                 </ul>
