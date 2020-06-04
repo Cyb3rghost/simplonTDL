@@ -13,8 +13,6 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
 
             <!-- bootstrapp-->
             <!-- CSS only -->
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
             <link rel="icon" href="image/test.png" />
             <!-- jquery-confirm.css-->
             <link rel="stylesheet" href="lib/jquery-confirm/jquery-confirm.css">
@@ -44,7 +42,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
             <div class="jumbotron jumbotron-fluid text-center">
                 <div class="container">
                     <img class="responsive-img" src="image/logo.png" alt="">
-                    <h1 class="display-4">Bienvenue, SimplonDeux</h1>
+                    <h1 class="display-4">Bienvenue, <?php echo $_SESSION['pseudo']; ?></h1>
                     <p class="lead">Sur votre espace personnel !</p>
                 </div>
             </div>
@@ -52,19 +50,19 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title text-center" id="exampleModalLabel">Créer un TODO</h5>
+                        <div class="modal-header bg-header">
+                            <h5 class="modal-title text-center" id="exampleModalLabel">Créer une tâche</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body bg-body">
                             <textarea class="form-control tache" id="exampleFormControlTextareaAjoutTache" rows="3" placeholder="..."></textarea>
                         </div>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                            <button type="button" class="btn btn-primary" id='btn_valider_aj'>Submit</button>
+                            <button type="button" class="btn btn-testing" id='btn_valider_aj'>Ajouter</button>
                         </div>
                         <div class='text-center mb-3 div_message_modal'></div>
                     </div>
@@ -75,21 +73,22 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
             <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title text-center" id="exampleModalLabel1">Attribuer un TODO</h5>
+                        <div class="modal-header bg-header">
+                            <h5 class="modal-title text-center" id="exampleModalLabel1">Attribuer une tâche</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body bg-body">
                             <h4 class='text-center' id="tacheToAttr"><!-- Nom de la tâche --></h4>
                             <div class="input-group mb-3">
-
                             <select class="custom-select" id="liste_u">
                                 <!-- Zone d'affichage de la liste des utilisateurs -->
                             </select>
                             </div>
                             <div class="flex">
+                            Liste des utilisateurs affectés à la tâche :
+                            <hr/>
                                 <ul class='liste_u_aff'>
                                     <!-- Zone d'affichage de la liste des utilisateurs affécté -->
                                 </ul>
@@ -98,7 +97,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                            <button type="button" class="btn btn-primary" id='btn_valider_attrib'>Submit</button>
+                            <button type="button" class="btn btn-testing" id='btn_valider_attrib'>Attribution</button>
                         </div>
                         <div class='text-center mb-3 div_message_modal'></div>
                     </div>
@@ -111,13 +110,13 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
             <div class="modal fade" id="exampleModalLabelModif" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title text-center" id="exampleModalLabel">Modifier le TODO</h5>
+                        <div class="modal-header bg-header">
+                            <h5 class="modal-title text-center" id="exampleModalLabel">Modifier la tâche</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body bg-body">
                             <div class="input-group mb-3">
                                 <textarea class="form-control" id="exampleFormControlTextareaModifTache" rows="3" placeholder="..."></textarea>
                             </div>
@@ -127,7 +126,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                            <button type="button" class="btn btn-primary" id='btn_valider_modif'>Submit</button>
+                            <button type="button" class="btn btn-testing" id='btn_valider_modif'>Modifier</button>
                         </div>
                         <div class='text-center mb-3 div_message_modal'></div>
                     </div>
@@ -135,15 +134,10 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
             </div>
             <div class="flex">
                 <div class="read">  
-                    <?php
-                        echo "<div style='text-align: center; height: 50px'> <h2>TODOList de ".$_SESSION['pseudo']."   <button type=\"button\" class=\"btn btn-primary test\" data-toggle=\"modal\" data-target=\"#exampleModal\" >ajouter un TODO </button></h2></div>";
-                    ?>       
-                    <div class="cadrePerso bg-white text-black">
-                        <div class="row liste_tache">
+                    <button type="button" class="btn btn-testing btn-block test" data-toggle="modal" data-target="#exampleModal" >Ajouter une tâche </button></h2></div>      
+                        <div class="liste_tache">
                             <!-- Zone d'affichage de la liste des tâches -->
                         </div>
-                    </div>
-                    <div>   
                         <input type="hidden" name="" id='id_tache'>
                         <input type="hidden" name="" id='tache'>
                     </div>

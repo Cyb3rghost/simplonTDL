@@ -20,7 +20,7 @@
 
 				foreach ($arr_res as $element) {
 
-                $contenuHtml .= '<div class="col-6">';
+                $contenuHtml .= '<div class="cadrePerso bg-white text-black"><div class="row"><div class="col-6">';
                     $contenuHtml .= '<div class="form-check text-center">';
 						if($element['etat'] == 0){
 		  					$contenuHtml .= '<input class="form-check-input chk" type="checkbox" name="chk'.$cpt.'" id="chk'.$cpt.'" value="'.$element['id'].'"  data-cpt="'.$cpt.'" data-etat="'.$element['etat'].'">';						
@@ -39,7 +39,7 @@
 	                    $contenuHtml .= '<img width="35" height="35" src="image/attribution.png" class="btn_attrib"  title="Attribuer une tâche" alt="" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'.$element['id'].'" data-tache="'.$element['tache'].'">'; 
 	                    $contenuHtml .= '<img width="35" height="35" src="image/update.png" class="btn_modif" title="Mise à jour d\'une tâche" alt="" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'.$element['id'].'" data-tache="'.$element['tache'].'"> ';
 	                    $contenuHtml .= '<img width="35" height="35" src="image/supprimer.png" class="btn_suppr" title="Supprimer" alt="" data-toggle="modal" data-target="#exampleModalLabelsuppr" data-id_tache="'.$element['id'].'"> ';                   
-	                $contenuHtml .= '</div>';
+	                $contenuHtml .= '</div></div></div>';
 
 					$cpt++;
 				}
