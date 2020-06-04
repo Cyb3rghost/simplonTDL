@@ -185,14 +185,25 @@ function mettreAjourEtat(id_tache,elem,etat){
 }
 
 function supprimerTache(id_tache){
-	$.ajax({
-		url : 'scripts/server.php',
-		type : 'POST',
-		data : {id:id_tache,action:'suppr'},
-		success:function(reponse){
-			location.reload();
-		}
-	});	
+	 $.confirm({
+	    title: 'Confirmation',
+	    content: 'Vous êtes êtes sur le point de supprimer cette tâche, voulez-vous continuer?',
+	    buttons: {
+	        OUI: function () {	           
+				$.ajax({
+					url : 'scripts/server.php',
+					type : 'POST',
+					data : {id:id_tache,action:'suppr'},
+					success:function(reponse){
+						location.reload();
+					}
+				});	
+	        },
+	        NON: function () {
+	           // Ne rien effectuer
+	         }
+	    }
+	  });
 }
 
 function authentification(){
