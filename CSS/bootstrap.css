@@ -10244,6 +10244,13 @@
 
 }
 
+.barrer{
+    text-decoration:line-through;
+}
+
+.btn_attrib:hover, .btn_modif:hover, .btn_suppr:hover{
+  cursor:pointer;
+}
 
   
  

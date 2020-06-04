@@ -19,31 +19,54 @@
 				$cpt =0;
 
 				foreach ($arr_res as $element) {
-					$contenuHtml .= '<li class="row">';
+
+                $contenuHtml .= '<div class="col-6">';
+                    $contenuHtml .= '<div class="form-check text-center">';
 					if($element['etat'] == 0){
-	  					$contenuHtml .= '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'.$cpt.'" id="chk'.$cpt.'" value="'.$element['id'].'"  data-cpt="'.$cpt.'" data-etat="'.$element['etat'].'"></div>';						
+	  					$contenuHtml .= '<input class="form-check-input chk" type="checkbox" name="chk'.$cpt.'" id="chk'.$cpt.'" value="'.$element['id'].'"  data-cpt="'.$cpt.'" data-etat="'.$element['etat'].'">';						
 					}else{
-						$contenuHtml .= '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'.$cpt.'" id="chk'.$cpt.'" value="'.$element['id'].'"  data-cpt="'.$cpt.'" data-etat="'.$element['etat'].'" checked></div>';						
+						$contenuHtml .= '<input class="form-check-input chk" type="checkbox" name="chk'.$cpt.'" id="chk'.$cpt.'" value="'.$element['id'].'"  data-cpt="'.$cpt.'" data-etat="'.$element['etat'].'" checked>';						
 					}
-	    			$contenuHtml .= '<div class="col">';
 
-	    			if($element['etat'] == 0){
-	        			$contenuHtml .= '<p><span id="text_tache'.$cpt.'" class=""> '.$element['tache'].'</span></p>';
+					if($element['etat'] == 0){
+	        			$contenuHtml .= '<label id="text_tache'.$cpt.'" class="form-check-label" for="chk'.$cpt.'"> '.$element['tache'].'</label>';
 	        		}else{
-	        			$contenuHtml .= '<p><span id="text_tache'.$cpt.'" class="barrer"> '.$element['tache'].'</span></p>';
+	        			$contenuHtml .= '<label id="text_tache'.$cpt.'" class="form-check-label barrer" for="chk'.$cpt.'"> '.$element['tache'].'</label>';
 					}
+                       
+                    $contenuHtml .= '</div>';
+	                $contenuHtml .= '</div>';
+	                $contenuHtml .= '<div class="col-6 text-center">';
+	                    $contenuHtml .= '<img width="35" height="35" src="image/attribution.png" class="btn_attrib"  title="Attribuer une tâche" alt="" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'.$element['id'].'" data-tache="'.$element['tache'].'">'; 
+	                    $contenuHtml .= '<img width="35" height="35" src="image/update.png" class="btn_modif" title="Mise à jour d\'une tâche" alt="" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'.$element['id'].'" data-tache="'.$element['tache'].'"> ';
+	                    $contenuHtml .= '<img width="35" height="35" src="image/supprimer.png" class="btn_suppr" title="Supprimer" alt="" data-toggle="modal" data-target="#exampleModalLabelsuppr" data-id_tache="'.$element['id'].'"> ';                   
+	                $contenuHtml .= '</div>';
 
-					if($element['id_prop']==='1'){
-			    		$contenuHtml .= '</div>'.
-							'<div class=" col"> <button class="btn btn-primary btn_attrib" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'.$element['id'].'" data-tache="'.$element['tache'].'">attribuer</button></div>'.
-							'<div class=" col">  <button class="btn btn-primary btn_modif" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'.$element['id'].'" data-tache="'.$element['tache'].'">modifier</button></div>'.
-							'<div class=" col">  <button class="btn btn-primary btn_suppr" data-toggle="modal" data-target="#exampleModalLabelsuppr" data-id_tache="'.$element['id'].'">supprimer</button></div>';
-					}else{
-						$contenuHtml .= '</div>'.
-											'<div class=" col" style="color:red"> Accès restreint</div>'.
-										'</div>';
-					}
-						$contenuHtml .= '</li>';
+					// $contenuHtml .= '<li class="row">';
+					// if($element['etat'] == 0){
+	  		// 			$contenuHtml .= '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'.$cpt.'" id="chk'.$cpt.'" value="'.$element['id'].'"  data-cpt="'.$cpt.'" data-etat="'.$element['etat'].'"></div>';						
+					// }else{
+					// 	$contenuHtml .= '<div class=" col"><input class="form-check-input chk" type="checkbox" name="chk'.$cpt.'" id="chk'.$cpt.'" value="'.$element['id'].'"  data-cpt="'.$cpt.'" data-etat="'.$element['etat'].'" checked></div>';						
+					// }
+	    // 			$contenuHtml .= '<div class="col">';
+
+	    // 			if($element['etat'] == 0){
+	    //     			$contenuHtml .= '<p><span id="text_tache'.$cpt.'" class=""> '.$element['tache'].'</span></p>';
+	    //     		}else{
+	    //     			$contenuHtml .= '<p><span id="text_tache'.$cpt.'" class="barrer"> '.$element['tache'].'</span></p>';
+					// }
+
+					// if($element['id_prop']==='1'){
+			  //   		$contenuHtml .= '</div>'.
+					// 		'<div class=" col"> <button class="btn btn-primary btn_attrib" data-toggle="modal" data-target="#exampleModal1" data-id_tache="'.$element['id'].'" data-tache="'.$element['tache'].'">attribuer</button></div>'.
+					// 		'<div class=" col">  <button class="btn btn-primary btn_modif" data-toggle="modal" data-target="#exampleModalLabelModif" data-id_tache="'.$element['id'].'" data-tache="'.$element['tache'].'">modifier</button></div>'.
+					// 		'<div class=" col">  <button class="btn btn-primary btn_suppr" data-toggle="modal" data-target="#exampleModalLabelsuppr" data-id_tache="'.$element['id'].'">supprimer</button></div>';
+					// }else{
+					// 	$contenuHtml .= '</div>'.
+					// 						'<div class=" col" style="color:red"> Accès restreint</div>'.
+					// 					'</div>';
+					// }
+					// 	$contenuHtml .= '</li>';
 					$cpt++;
 				}
 				echo $contenuHtml;

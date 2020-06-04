@@ -1,6 +1,6 @@
 /** code color : blue #B7B7E1 ; Mauve : #DBC2FF ; cultured : #F6F4F4 **/
 
-body{
+/*body{
     height: 100%;
     width: 100%;
     background-color: #F6F4F4;
@@ -20,7 +20,7 @@ body{
     border-radius: 10px;
     width: 60%;
     margin-bottom: 100px;
-}
+}*/
 
 .btn-primary{
     background-color: #B7B7E1 !important;
