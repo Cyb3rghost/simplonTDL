@@ -1,5 +1,5 @@
 <?php session_start();
-
+    //  Récupération de la liste des utilisateurs affecté à une tâches à l'exception du propriétaire s'il est l'utilisateur connécté
 if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']) && isset($_POST['idtache']))
 {
 

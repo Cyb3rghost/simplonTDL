@@ -1,10 +1,10 @@
 <?php session_start();
 
-if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo']))
+if(!empty($_SESSION['id']) && !empty($_SESSION['pseudo'])) // si la personne est connectée alors //
 {
 
     include('connexionbdd.php');
-    
+    // recuperation des données qui concerne l'utilisateur
     $stmt = $pdo->prepare("SELECT taches.id,user_id,tache,etat,proprietaire FROM affecter INNER JOIN taches ON taches.id = affecter.tache_id WHERE user_id = :userid");
     $stmt->bindValue(':userid', $_SESSION['id']);
     $stmt->execute();
