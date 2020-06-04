@@ -1,4 +1,6 @@
-
+ function htmlentities(str){
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
 $(document).ready(function(){			
 	let id_user = '2';//$('.contenu').val();
 	if(!$('#btn_conn').length){	//	Efectuer les instructions qui suit si le bouton connexion n'éxiste pas (si on n'est pas dans page de connexion)
@@ -45,7 +47,7 @@ $(document).on('click','#btn_valider_aj',function(e){
 
 $(document).on('click','.btn_attrib',function(e){	
 	$('#id_tache').val($(this).data("id_tache"));	
-	$('#tache').val($(this).data("tache"));	
+	$('#tache').val(htmlentities($(this).data("tache")));	
 	let id_tache = $('#id_tache').val();
 	let tache = $('#tache').val();
 	$('#tacheToAttr').html("Tâche : "+tache);		
