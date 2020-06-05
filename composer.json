@@ -1,8 +1,7 @@
 {
 
     "require": {
-        "ext-pdo_sqlite": "*",
-        "phpdocumentor/phpdocumentor": "2.*"
+        "ext-pdo_sqlite": "*"
     }
 
 }
